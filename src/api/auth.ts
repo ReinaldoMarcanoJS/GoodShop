@@ -18,7 +18,8 @@ export const apiLogin = async (user: LoginUser) => {
     password: user.password,
   });
   console.log(response);
-
+  console.log(window.Cookies.get("token"));
+  
   return response;
 };
 
