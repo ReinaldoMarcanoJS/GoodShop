@@ -21,7 +21,7 @@ export const Navbar = (): JSX.Element => {
   const user = useSelector((state: IRootState) => state.auth.User);
   const handleLogout = async () => {
     const response = await apiLogout()
-    if(response.statusText === "OK"){
+    if(response.data === "OK"){
       toast.success("log out")
       dispatch(setIsAuth(false))
       dispatch(setUser(null))
