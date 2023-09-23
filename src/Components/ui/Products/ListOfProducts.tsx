@@ -1,5 +1,5 @@
-import { ProductCard } from "./ProductCard";
-import { ArrayProducts } from "../../../types";
+// import { ProductCard } from "./ProductCard";
+// import { ArrayProducts } from "../../../types";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { IRootState } from "../../../reducers/rootReducer";
@@ -14,10 +14,10 @@ export const ListOfProducts = (): JSX.Element => {
     },[products])
   return (
     <div className="w-full">
-      {products.map((product) => {
-        <ProductCard name={product.name} description={product.description} price={product.price} />
+      // {/* {products.map((product) => { */}
+        {/* // <ProductCard name={product.name} description={product.description} price={product.price} /> */}
 
-      })}
+      {/* // })} */}
     </div>
   );
 };
