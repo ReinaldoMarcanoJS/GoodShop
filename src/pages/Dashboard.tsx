@@ -2,14 +2,14 @@ import { Footer } from "../Components/Footer";
 import { Navbar } from "..//Components/Navbar";
 import { Loader } from "..//Components/ui";
 import { ListOfProducts } from "../Components/ui/Products/ListOfProducts";
-import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from "../reducers/rootReducer";
+import { useDispatch } from "react-redux";
+// import { IRootState } from "../reducers/rootReducer";
 import { useEffect } from "react";
 import { getProducts } from "../api/products";
 import { setProducts } from "../slices/products.slice";
 
 export const Dashboard = (): JSX.Element => {
-  const products = useSelector((state:IRootState)=>state.products.products)
+  // const products = useSelector((state:IRootState)=>state.products.products)
   const dispath = useDispatch();
   useEffect(()=>{
     async function fetchProducts(){
@@ -57,7 +57,7 @@ export const Dashboard = (): JSX.Element => {
                 </div>
               </div> */}
               <div className="w-full">
-                <ListOfProducts productsProps={products} />
+                <ListOfProducts />
               </div>
             </main>
           </div>
