@@ -14,6 +14,8 @@ export const Dashboard = (): JSX.Element => {
   useEffect(()=>{
     async function fetchProducts(){
         const products = await getProducts();
+        await fetch("https://goodshopbackend.up.railway.app/src/uploads/dfaed64f-4594-4ac0-b8a4-f748491a5065.jpeg")
+        .then(res => console.log(res))
         dispath(setProducts(products))
     } 
     fetchProducts();

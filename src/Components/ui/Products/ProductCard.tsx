@@ -1,12 +1,12 @@
 import carro from "../../../assets/carros_CATEGORIAS.svg";
 
-type product = {
-  name: string,
-  price: string,
-  description: string,
-}
+// type product = {
+//   name: string,
+//   price: string,
+//   description: string,
+// }
 
-export const ProductCard = ({name,description,price}:product): JSX.Element => {
+export const ProductCard = (): JSX.Element => {
 
   
   return (
@@ -15,15 +15,20 @@ export const ProductCard = ({name,description,price}:product): JSX.Element => {
         <div className="mobile:w-auto ">
           <div className="mobile:w-auto">
             <div className="flex justify-between mx-2">
-                <p>{name}</p>
-                <p>{price}</p>
+                <p>Cartera</p>
+                {/* <p>{name}</p> */}
+                <p>26,99$</p>
+                {/* <p>{price}</p> */}
             </div>
             <div className="mobile flex justify-center">
             <img src={carro} alt="producto" />
             </div>
             <div className="flex flex-col justify-center items-center">
-              <p className="mobile:text-base p-2">
+              {/* <p className="mobile:text-base p-2">
                 {description}
+              </p> */}
+              <p className="mobile:text-base p-2">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore, molestias.
               </p>
               <button className="mobile:w-auto border mobile:my-2 mobile:px-2 border-cyan-700 bg-slate-500/10  mobile:h-auto mobile:items-center mobile:flex shadow-xl rounded-md mobile:text-xl mobile"><span>add to card</span></button>
             </div>
