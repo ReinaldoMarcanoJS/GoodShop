@@ -162,7 +162,7 @@ export const Register = (): JSX.Element => {
               )}
             </div>
 
-            <button type="submit">Submit</button>
+            <button type="submit">Register</button>
 
             <p className="flex gap-x-2 justify-between mobile:px-4 desktop:my-3 2xl:my-4 ">
               already have an account?{" "}

@@ -111,7 +111,7 @@ export const Login = (): JSX.Element => {
             </div>
 
             <button type="submit" className="mobile:pb-2" disabled={loading}>
-              Submit
+                Login
             </button>
             <p className="flex justify-between px-6 gap-x-2 desktop:my-3 2xl:my-4">
               Don't have an account?{" "}

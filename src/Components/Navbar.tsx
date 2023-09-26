@@ -184,35 +184,7 @@ export const Navbar = (): JSX.Element => {
 
                   <div className="w-full h-2 border-b-2 border-white/80 py-2"></div>
 
-                  <div className="mobile:h-full w-full">
-                    <div className="pt-4 flex justify-around items-center text-left">
-                      <ul className="mobile:text-center">
-                        <span className="font-semibold mb- text-lg mt-4">
-                          Siguenos
-                        </span>
-                        <OptionsRedirectModal className="mt-1">
-                          Facebook
-                        </OptionsRedirectModal>
-                        <OptionsRedirectModal>Instagram</OptionsRedirectModal>
-                        <OptionsRedirectModal>Youtube</OptionsRedirectModal>
-                        <OptionsRedirectModal>linkedin</OptionsRedirectModal>
-                      </ul>
-
-                      <ul className="mobile:text-center">
-                        <span className="font-semibold mb- text-lg mt-4">
-                          GoodShop
-                        </span>
-                        <OptionsRedirectModal className="mt-1">
-                          Uso y Reglas
-                        </OptionsRedirectModal>
-                        <OptionsRedirectModal>Contactanos</OptionsRedirectModal>
-                        <OptionsRedirectModal>donaciones</OptionsRedirectModal>
-                        <OptionsRedirectModal>
-                          Recomiendanos
-                        </OptionsRedirectModal>
-                      </ul>
-                    </div>
-                  </div>
+                  
                 </ul>
               </div>
             </div>
