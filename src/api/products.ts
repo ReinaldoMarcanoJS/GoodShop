@@ -1,9 +1,15 @@
-import { ArrayProducts } from '../types'
-import axios from './axios'
+import axios from "./axios";
+import { newProduct } from "../types";
 
 export const getProducts = async () => {
-    await axios.get<ArrayProducts>("/products")
-    .then((res) => res.data)
-    .catch((err) => console.log(err))
-}
-
+  const response = await axios.get("/products");
+  return response;
+};
+export const addProduct = async (product: newProduct) => {
+    const formData = new FormData
+    formData.append("image", product.image)
+  const response = await axios.post("/products", {
+    data: product,
+  });
+  return response;
+};

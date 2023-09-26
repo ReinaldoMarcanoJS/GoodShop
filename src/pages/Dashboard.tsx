@@ -2,24 +2,17 @@ import { Footer } from "../Components/Footer";
 import { Navbar } from "..//Components/Navbar";
 import { Loader } from "..//Components/ui";
 import { ListOfProducts } from "../Components/ui/Products/ListOfProducts";
-import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+// import { useDispatch } from "react-redux";
 // import { IRootState } from "../reducers/rootReducer";
-import { useEffect } from "react";
-import { getProducts } from "../api/products";
-import { setProducts } from "../slices/products.slice";
+// import { useEffect } from "react";
+// import { getProducts } from "../api/products";
+// import { setProducts } from "../slices/products.slice";
 
 export const Dashboard = (): JSX.Element => {
   // const products = useSelector((state:IRootState)=>state.products.products)
-  const dispath = useDispatch();
-  useEffect(()=>{
-    async function fetchProducts(){
-        const products = await getProducts();
-        await fetch("https://goodshopbackend.up.railway.app/src/uploads/dfaed64f-4594-4ac0-b8a4-f748491a5065.jpeg")
-        .then(res => console.log(res))
-        dispath(setProducts(products))
-    } 
-    fetchProducts();
-  },[])
+  // const dispath = useDispatch();
+  const navigate = useNavigate()
   const loading = false;
   return (
     <>
@@ -27,8 +20,8 @@ export const Dashboard = (): JSX.Element => {
       <div
         className={
           loading
-            ? "grid bg-#fff pl-5 mobile:pt-32 tablet:pt-32 desktop:pt-48 2xl:pt-48 "
-            : "mobile:bg-#fff h-full "
+            ? "grid bg-#fff pl-5 mobile:pt-32 tablet:pt-32 desktop:pt-48 2xl:pt-48  "
+            : "mobile:bg-#fff h-auto "
         }>
         {loading ? (
           <Loader />
@@ -42,7 +35,7 @@ export const Dashboard = (): JSX.Element => {
               }>
               <div className="mobile:w-11/12 border mobile:mb-2 border-cyan-700 bg-slate-500/10 duration-100 mobile:h-10 mobile:active:text-2xl mobile:items-center mobile:flex mobile:justify-center shadow-xl rounded-md mobile:font-default mobile:text-xl text-center mobile:font-medium">
                 <div className="mobile:w-auto ">
-                  <button className="">
+                  <button className="" onClick={() => navigate("/addproduct")}>
                     <p className="text-cyan-700  ">
                       Sell your products with us!
                     </p>
@@ -64,8 +57,9 @@ export const Dashboard = (): JSX.Element => {
             </main>
           </div>
         )}
-      </div>
       <Footer />
+
+      </div>
     </>
   );
 };

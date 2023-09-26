@@ -1,12 +1,14 @@
-import carro from "../../../assets/carros_CATEGORIAS.svg";
+// import carro from "../../../assets/carros_CATEGORIAS.svg";
 
-// type product = {
-//   name: string,
-//   price: string,
-//   description: string,
-// }
+type product = {
+  title: string,
+  price: string,
+  description: string,
+  image: string,
+  _id: string
+}
 
-export const ProductCard = (): JSX.Element => {
+export const ProductCard = ({description,image,price,title} : product): JSX.Element => {
 
   
   return (
@@ -15,20 +17,15 @@ export const ProductCard = (): JSX.Element => {
         <div className="mobile:w-auto ">
           <div className="mobile:w-auto">
             <div className="flex justify-between mx-2">
-                <p>Cartera</p>
-                {/* <p>{name}</p> */}
-                <p>26,99$</p>
-                {/* <p>{price}</p> */}
+                <p>{title}</p>
+                <p>Price: ${price}</p>
             </div>
-            <div className="mobile flex justify-center">
-            <img src={carro} alt="producto" />
+            <div className="mobile flex justify-center w-full h-auto">
+            <img src={`http://localhost:3001/uploads/${image}`} alt={`${title}`} className="w-full"/>
             </div>
             <div className="flex flex-col justify-center items-center">
-              {/* <p className="mobile:text-base p-2">
-                {description}
-              </p> */}
               <p className="mobile:text-base p-2">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore, molestias.
+                {description}
               </p>
               <button className="mobile:w-auto border mobile:my-2 mobile:px-2 border-cyan-700 bg-slate-500/10  mobile:h-auto mobile:items-center mobile:flex shadow-xl rounded-md mobile:text-xl mobile"><span>add to card</span></button>
             </div>

@@ -1,10 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ArrayProducts } from "../types";
 
-
-
-
-const initialState = {
-  products: [],
+const initialState: ArrayProducts = {
+  products: [
+    {
+      title: "cartera",
+      user: "cartera",
+      image: "2344",
+      price: "cartera",
+      description: "cartera",
+      _id: "cartera",
+    },
+  ],
 };
 
 export const authSlice = createSlice({
