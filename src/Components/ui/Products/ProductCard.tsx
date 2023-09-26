@@ -21,7 +21,7 @@ export const ProductCard = ({description,image,price,title} : product): JSX.Elem
                 <p>Price: ${price}</p>
             </div>
             <div className="mobile flex justify-center w-full h-auto">
-            <img src={`http://localhost:3001/uploads/${image}`} alt={`${title}`} className="w-full"/>
+            <img src={`https://goodshopbackend.up.railway.app/uploads/${image}`} alt={`${title}`} className="w-full"/>
             </div>
             <div className="flex flex-col justify-center items-center">
               <p className="mobile:text-base p-2">
