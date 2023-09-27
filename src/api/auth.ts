@@ -13,6 +13,8 @@ export const apiRegister = async (user: User) => {
 };
 
 export const apiLogin = async (user: LoginUser) => {
+  console.log(user);
+  
   const response = await axios.post("/login", {
     email: user.email,
     password: user.password,

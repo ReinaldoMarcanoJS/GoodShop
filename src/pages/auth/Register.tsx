@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import { InputForm } from "../../Components/ui";
 import { apiRegister } from "../../api/auth";
 import { SignupSchema } from "../../schemas/auth.schemas";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 import { AxiosError } from "axios";
 interface Values {
   name: string;
@@ -15,7 +15,7 @@ interface Values {
 }
 
 export const Register = (): JSX.Element => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const formik = useFormik<Values>({
     initialValues: {
       name: "",
@@ -37,20 +37,20 @@ export const Register = (): JSX.Element => {
       };
       try {
         const response = apiRegister(userparam);
-        toast.success((await response).data)
+        toast.success((await response).data);
 
         setTimeout(() => {
-          navigate("/login")
-        },3000)
+          navigate("/login");
+        }, 3000);
       } catch (error) {
         let message;
-        console.log(error);
-        
-        if (error instanceof AxiosError){
-          message = error.response?.data
-        } else message = String(error)
-        console.log(message)
-        toast.error(message);
+
+        if (error instanceof AxiosError) {
+          message = error.response?.data;
+          console.log(error.message);
+          toast.error(message);
+        } else message = String(error);
+        console.log(message);
       }
       setSubmitting(false);
     },
@@ -58,12 +58,15 @@ export const Register = (): JSX.Element => {
 
   return (
     <div className="mobile:h-screen mobile:flex mobile:flex-col mobile:justify-center mobile:items-center mobile:px-4  bg-gradient-to-r from-cyan-900 via-orange-950 to-cyan-900 stop">
-      <Toaster position="top-center" toastOptions={{
-        style: {
-          color: "hsl(0, 100%, 74%)",
-          fontSize: "20px"
-        }
-      }} />
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            color: "hsl(0, 100%, 74%)",
+            fontSize: "20px",
+          },
+        }}
+      />
       <div className="mobile:w-full mobile:h-auto mobile:flex mobile:rounded-md mobile:bg-white  tablet:w-11/12 md:w-3/4 desktop:w-3/5 desktop:text-xl 2xl:text-3xl 2xl:w-10/12 ">
         <Box
           component="form"
