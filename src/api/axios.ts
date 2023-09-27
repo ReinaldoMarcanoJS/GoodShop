@@ -6,10 +6,8 @@ const instance = axios.create({
   
   headers: {
     "Content-Type": "multipart/form-data",
-    "same-site": "none",
     Accept: "application/json",
   },
-  withCredentials: true
 });
 
 export default instance;
