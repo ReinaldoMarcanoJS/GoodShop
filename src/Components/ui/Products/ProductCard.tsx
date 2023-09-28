@@ -40,7 +40,7 @@ export const ProductCard = ({ image, title, price,_id, description}: product): J
         <div className="mobile:w-full mobile:mt-2 bg-slate-500/10 items-center duration-100  mobile:items-center mobile:flex mobile:flex-row mobile:justify-center shadow-xl rounded-md">
           <div className="mobile flex justify-center w-full h-auto">
             <img
-              src={`http://localhost:3001/uploads/${image}`}
+              src={`https://goodshopbackend.up.railway.app/uploads/${image}`}
               alt={`${title}`}
               className="mobile:h-40 mobile:w-40 tablet:w-64 tablet:h-64 md:w-60 md:h-60 desktop:w-64 desktop:h-64 2xl:w-72 2xl:h-72"
               onClick={() => handleNavigate()}
