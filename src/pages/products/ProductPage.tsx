@@ -25,7 +25,7 @@ export const ProductPage = (): JSX.Element => {
           </div>
         <div className="w-full h-auto shadow-lg">
           <img
-            src={`http://localhost:3001/uploads/${image}`}
+            src={`https://goodshopbackend.up.railway.app/uploads/${image}`}
             alt={`${title}`}
             className="mobile:h-auto  mobile:w-full tablet:w-64 tablet:h-64 md:w-60 md:h-60 desktop:w-64 desktop:h-64 2xl:w-72 2xl:h-72"
           />
