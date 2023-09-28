@@ -8,7 +8,7 @@ import { AxiosError } from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { apiLogin } from "../../api/auth";
 import { setUser } from "../../slices/auth.slice";
-import {setIsAuth, setLoadingRequest } from "../../slices/ui.slice";
+import { setIsAuth, setLoadingRequest } from "../../slices/ui.slice";
 import { IRootState } from "../../reducers/rootReducer";
 interface Values {
   email: string;
@@ -80,14 +80,14 @@ export const Login = (): JSX.Element => {
             <InputForm
               id="email"
               name="email"
-              placeholder="john@acme.com"
+              placeholder="********"
               type="email"
               value={formik.values.email}
               onChange={formik.handleChange}
             />
             <div className="mobile:relative">
               {Boolean(formik.errors.email) && (
-                <span className="mobile:text-redError absolute bottom-4 mobile:left-3/4 tablet:bottom-6 desktop:bottom-8 2xl:bottom-10 tablet:bg-left">
+                <span className="mobile:text-redError absolute bottom-4 mobile:left-3/4 tablet:bottom-6 desktop:bottom-8 2xl:bottom-12">
                   {formik.errors.email}
                 </span>
               )}
@@ -104,15 +104,20 @@ export const Login = (): JSX.Element => {
             />
             <div className="mobile:relative">
               {Boolean(formik.errors.password) && (
-                <span className="mobile:text-redError absolute bottom-4 mobile:left-3/4 tablet:bottom-6 desktop:bottom-8 2xl:bottom-10">
+                <span className="mobile:text-redError absolute bottom-4 mobile:left-3/4 tablet:bottom-6 desktop:bottom-8 2xl:bottom-12">
                   {formik.errors.password}
                 </span>
               )}
             </div>
 
-            <button type="submit" className="mobile:pb-2" disabled={loading}>
+            <div className="w-full flex justify-center">
+              <button
+                type="submit"
+                className="mobile:w-20 items-center mobile:rounded-md mobile:mb-2 mobile:mt-2 mobile:border desktop:w-24 desktop:py-1 2xl:py-4 2xl:rounded-xl mobile:bg-cyan-700/20  mobile:border-cyan-700 outline-none tablet:mb-4 desktop:mb-6 2xl:mb-8  2xl:w-36 "
+                disabled={loading}>
                 Login
-            </button>
+              </button>
+            </div>
             <p className="flex justify-between px-6 gap-x-2 desktop:my-3 2xl:my-4">
               Don't have an account?{" "}
               <Link to={"/register"} className="text-sky-500">

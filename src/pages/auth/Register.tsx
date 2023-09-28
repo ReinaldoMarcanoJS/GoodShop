@@ -6,6 +6,8 @@ import { apiRegister } from "../../api/auth";
 import { SignupSchema } from "../../schemas/auth.schemas";
 import toast, { Toaster } from "react-hot-toast";
 import { AxiosError } from "axios";
+import { useSelector } from "react-redux";
+import { IRootState } from "../../reducers/rootReducer";
 interface Values {
   name: string;
   lastname: string;
@@ -15,6 +17,8 @@ interface Values {
 }
 
 export const Register = (): JSX.Element => {
+  const loading = useSelector((state: IRootState) => state.ui.loadingRequest);
+
   const navigate = useNavigate();
   const formik = useFormik<Values>({
     initialValues: {
@@ -165,8 +169,14 @@ export const Register = (): JSX.Element => {
               )}
             </div>
 
-            <button type="submit">Register</button>
-
+            <div className="w-full flex justify-center">
+              <button
+                type="submit"
+                className="mobile:w-20 items-center mobile:rounded-md mobile:mb-2 mobile:mt-2 mobile:border desktop:w-24 desktop:py-1 2xl:py-4 2xl:rounded-xl mobile:bg-cyan-700/20  mobile:border-cyan-700 outline-none tablet:mb-4 desktop:mb-6 2xl:mb-8  2xl:w-36 "
+                disabled={loading}>
+                Register
+              </button>
+            </div>
             <p className="flex gap-x-2 justify-between mobile:px-4 desktop:my-3 2xl:my-4 ">
               already have an account?{" "}
               <Link to={"/login"} className="text-sky-500">

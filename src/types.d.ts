@@ -22,3 +22,7 @@ export type User = {
   export type ArrayProducts = {
     products: Product[]
   }
+
+  export type OneProduct = {
+    product: Product
+  }

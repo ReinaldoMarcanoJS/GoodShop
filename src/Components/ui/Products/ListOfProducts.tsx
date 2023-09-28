@@ -23,20 +23,22 @@ export const ListOfProducts = (): JSX.Element => {
   console.log(products);
 
   return (
-    <div>
+    <div className="w-full  h-auto items-center grid mobile:grid-cols-2 tablet:grid-cols-2 md:grid-cols-3 desktop:grid-cols-4 2xl:grid-cols-5">
       {products.map((product: Product, index) => {
-        const { _id, description, image, price, title } = product;
-          return (
-            <div key={index}>
-              <ProductCard
-                _id={_id}
-                description={description}
-                image={image}
-                price={price}
-                title={title}
-              />
-            </div>
-          )
+        const { _id, description, image, price, title, user } = product;
+        return (
+          <div key={index} className="w-full flex justify-center ">
+            <ProductCard
+              user={user}
+              _id={_id}
+              description={description}
+              image={image}
+              price={price}
+              title={title}
+              key={_id}
+            />
+          </div>
+        );
       })}
     </div>
   );

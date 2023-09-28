@@ -41,6 +41,9 @@ export default {
       fontWeight: {
         "h1-hover": "900",
       },
+      transitionDuration: {
+        "duration-3000" : "3000ms"
+      }
     },
   },
   plugins: [],

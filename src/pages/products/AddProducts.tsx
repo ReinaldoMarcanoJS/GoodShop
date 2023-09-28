@@ -7,6 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { IRootState } from "../../reducers/rootReducer";
 import { useState } from "react";
+import { newProductSchema } from "../../schemas/product.schemas";
 interface Values {
   title: string;
   description: string;
@@ -17,8 +18,10 @@ interface Values {
 export const AddProduct = (): JSX.Element => {
   const [Image, setImage] = useState<File | string>("fileurl");
   const userId = useSelector((state: IRootState) => state.auth.User.id);
+  const loading = useSelector((state: IRootState) => state.ui.loadingRequest);
+
   console.log(userId);
-  
+
   const navigate = useNavigate();
   const formik = useFormik<Values>({
     initialValues: {
@@ -27,19 +30,16 @@ export const AddProduct = (): JSX.Element => {
       price: "",
       user: "",
     },
+    validationSchema: newProductSchema,
     onSubmit: async (
       values: Values,
       { setSubmitting }: FormikHelpers<Values>
     ) => {
       console.log(values);
       const { description, price, title } = values;
-      // const userparam = {
-      //   title: values.title,
-      //   description: values.description,
-      //   price: values.price,
-      //   image: Image,
-      //   user: userId,
-      // };
+      if(Image === "fileurl"){
+        return toast.error("incomplete image field")
+      }
       let formData = new FormData();
       formData.append("image", Image);
       formData.append("title", title);
@@ -49,15 +49,16 @@ export const AddProduct = (): JSX.Element => {
       console.log(formData.getAll(""));
 
       try {
-        await axios.post("/products",formData)
-        .then(_res => toast.success("New Product Added!"))
-        .then(res => console.log(res))
-        .catch(_error => toast.error("Something was wrong!"))
+        await axios
+          .post("/products", formData)
+          .then((_res) => toast.success("New Product Added!"))
+          .then((res) => console.log(res))
+          .catch((_error) => toast.error("Something was wrong!"));
         setTimeout(() => {
           navigate("/");
         }, 3000);
       } catch (error) {
-        console.log(error);
+        return console.log(error);
       }
       setSubmitting(false);
     },
@@ -151,10 +152,18 @@ export const AddProduct = (): JSX.Element => {
               name="image"
               placeholder="********"
               type="file"
+              accept="image/png,image/jpg,image/jpeg"
               onChange={(e) => handleChangeImage(e)}
             />
 
-            <button type="submit">Submit</button>
+            <div className="w-full flex justify-center">
+              <button
+                type="submit"
+                className="mobile:w-20 items-center mobile:rounded-md mobile:mb-2 mobile:mt-2 mobile:border desktop:w-24 desktop:py-1 2xl:py-4 2xl:rounded-xl mobile:bg-cyan-700/20  mobile:border-cyan-700 outline-none tablet:mb-4 desktop:mb-6 2xl:mb-8  2xl:w-36 "
+                disabled={loading}>
+                send
+              </button>
+            </div>
 
             <p className="flex gap-x-2 justify-between mobile:px-4 desktop:my-3 2xl:my-4 ">
               back to Dasboard?
