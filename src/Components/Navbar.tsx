@@ -118,7 +118,7 @@ export const Navbar = (): JSX.Element => {
       </div>
 
       {OpenModal && (
-        <div className="mobile:w-full mobile:h-screen fixed bg-black/75 mobile:absolute">
+        <div className="font-default mobile:w-full mobile:h-screen fixed bg-black/75 mobile:absolute">
           <div className="mobile:fixed  mobile:duration-300 mobile:h-screen mobile:w-3/4 bg-slate-600/95">
             <div className="mobile:mx-2 mobile:rounded-lg mobile:h-full">
               <div
@@ -130,11 +130,13 @@ export const Navbar = (): JSX.Element => {
                 <BsPersonCircle color="white" />
 
                 {isAuth && user ? (
-                  <p className="mobile:ml-4">
-                    <span>
-                      {user.name} {user.lastname}
-                    </span>
-                  </p>
+                  <div>
+                    <p className="mobile:ml-4">
+                      <span>
+                        {user.name} {user.lastname}
+                      </span>
+                    </p>
+                  </div>
                 ) : (
                   <>
                     <p className="mobile:ml-4">Hola, Inicia Sesion</p>
@@ -143,13 +145,21 @@ export const Navbar = (): JSX.Element => {
               </div>
 
               <div className="mobile:mx-3 mobile:h-full">
+                {isAuth && user && (
+                  <div className="w-full py-1 mb-3 text-white-default  hover:bg-black/50 rounded-md px-3">
+                    <p className="hover:pointer-events-auto">
+                      <a href="#">My Perfil</a>
+                    </p>
+                  </div>
+                )}
+
                 <ul className="mobile:text-white-default p">
                   <h3 className="mobile:text-white-default mobile:ml-6">
                     Categories
                   </h3>
                   <div className="w-full h-2 border-b-2 border-white/80"></div>
 
-                  <div className="mobile:ml-3">
+                  <div className="">
                     <OptionsRedirectModal className="mt-1">
                       Electronics
                     </OptionsRedirectModal>
@@ -183,8 +193,6 @@ export const Navbar = (): JSX.Element => {
                   </div>
 
                   <div className="w-full h-2 border-b-2 border-white/80 py-2"></div>
-
-                  
                 </ul>
               </div>
             </div>

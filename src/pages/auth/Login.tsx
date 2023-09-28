@@ -10,6 +10,7 @@ import { apiLogin } from "../../api/auth";
 import { setUser } from "../../slices/auth.slice";
 import { setIsAuth, setLoadingRequest } from "../../slices/ui.slice";
 import { IRootState } from "../../reducers/rootReducer";
+import { FiSkipBack } from "react-icons/fi";
 interface Values {
   email: string;
   password: string;
@@ -60,16 +61,24 @@ export const Login = (): JSX.Element => {
   });
 
   return (
-    <div className="mobile:h-screen mobile:flex mobile:flex-col mobile:justify-center mobile:items-center mobile:px-4 tablet:  bg-gradient-to-r from-cyan-900 via-orange-950 to-cyan-900 stop">
+    <div className="mobile:h-screen mobile:flex justify-center mobile:flex-col bg-gradient-to-r from-cyan-900 via-orange-950 to-cyan-900 stop font-default mobile:justify-center mobile:items-center mobile:px-4 tablet: ">
       <Toaster />
-      <div className="mobile:w-full mobile:h-auto mobile:flex mobile:rounded-md mobile:bg-white tablet:w-11/12 md:w-3/4 desktop:w-3/5 desktop:text-xl 2xl:text-3xl 2xl:w-10/12">
+
+      <div className="bg-transparent mobile:w-full mobile:h-auto mobile:flex flex-col mobile:rounded-md mobile:bg-white tablet:w-11/12 md:w-3/4 desktop:w-3/5 desktop:text-xl 2xl:text-3xl 2xl:w-10/12">
         <Box
           component="form"
           onSubmit={formik.handleSubmit}
           width="100%"
           display={"flex"}
           justifyContent={"center"}>
-          <div className="mobile:flex mobile:flex-col mobile:py-5 font-medium font-default mobile:px-4 mobile:w-full 2xl:w-11/12">
+          <div className="mobile:flex mobile:flex-col mobile:pb-5 font-medium font-default mobile:px-4 mobile:w-full 2xl:w-11/12">
+            <span
+              className="flex ml-2 cursor-pointer mt-2 items-center"
+              onClick={() => navigate(-1)}>
+              <FiSkipBack color="black" size="1.5rem" />
+              <p className="pr-1 text-black text-2xl font-medium">Back</p>
+            </span>
+
             <div className="text-center">
               <h3 className="mobile:font-semibold mobile:text-4xl tablet:text-ellipsis desktop:text-5xl 2xl:text-7xl 2xl:my-2">
                 Login

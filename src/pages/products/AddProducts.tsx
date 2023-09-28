@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { IRootState } from "../../reducers/rootReducer";
 import { useState } from "react";
 import { newProductSchema } from "../../schemas/product.schemas";
+import { FiSkipBack } from "react-icons/fi";
 interface Values {
   title: string;
   description: string;
@@ -37,8 +38,8 @@ export const AddProduct = (): JSX.Element => {
     ) => {
       console.log(values);
       const { description, price, title } = values;
-      if(Image === "fileurl"){
-        return toast.error("incomplete image field")
+      if (Image === "fileurl") {
+        return toast.error("incomplete image field");
       }
       let formData = new FormData();
       formData.append("image", Image);
@@ -90,6 +91,12 @@ export const AddProduct = (): JSX.Element => {
           display={"flex"}
           justifyContent={"center"}>
           <div className="mobile:flex mobile:flex-col mobile:py-5 font-medium font-default mobile:px-4 mobile:w-full 2xl:w-11/12">
+            <span
+              className="flex ml-2 cursor-pointer mt-2 items-center"
+              onClick={() => navigate(-1)}>
+              <FiSkipBack color="black" size="1.5rem" />
+              <p className="pr-1 text-black text-2xl font-medium">Back</p>
+            </span>
             <div className="text-center">
               <h3 className="mobile:font-semibold text-4xl desktop:text-5xl 2xl:text-7xl 2xl:my-2">
                 New
