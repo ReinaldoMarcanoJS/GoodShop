@@ -9,30 +9,38 @@ type product = {
   description: string;
   image: string;
   _id: string;
-  user:string
+  user: string;
 };
 type propsTextAnimate = {
   title: string;
   price: string;
 };
 
-export const ProductCard = ({ image, title, price,_id, description}: product): JSX.Element => {
-  const navigate = useNavigate()
-  const dispath = useDispatch()
+export const ProductCard = ({
+  image,
+  title,
+  price,
+  _id,
+  description,
+}: product): JSX.Element => {
+  const navigate = useNavigate();
+  const dispath = useDispatch();
 
   const handleNavigate = () => {
-      async function fetchProduct() {
-        dispath(setProduct({
+    async function fetchProduct() {
+      dispath(
+        setProduct({
           title,
           _id,
           price,
           image,
-          description
-        }))
-        navigate(`/products/${_id}`)
-      }
-        fetchProduct();
-  } 
+          description,
+        })
+      );
+      navigate(`/products/${_id}`);
+    }
+    fetchProduct();
+  };
   console.log(image);
   return (
     <div>
@@ -40,7 +48,7 @@ export const ProductCard = ({ image, title, price,_id, description}: product): J
         <div className="mobile:w-full mobile:mt-2 bg-slate-500/10 items-center duration-100  mobile:items-center mobile:flex mobile:flex-row mobile:justify-center shadow-xl rounded-md">
           <div className="mobile flex justify-center w-full h-auto">
             <img
-              src={`http://localhost:3001/uploads/${image}`}
+              src={`https://goodshopbackend.up.railway.app/uploads/${image}`}
               alt={`${title}`}
               className="mobile:h-40 mobile:w-40 tablet:w-64 tablet:h-64 md:w-60 md:h-60 desktop:w-64 desktop:h-64 2xl:w-72 2xl:h-72"
               onClick={() => handleNavigate()}
@@ -54,7 +62,6 @@ export const ProductCard = ({ image, title, price,_id, description}: product): J
     </div>
   );
 };
-
 
 export const AnimateText = ({
   title,
